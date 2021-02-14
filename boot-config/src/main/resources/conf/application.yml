@@ -1,0 +1,4 @@
+redis:
+  auth: redis -01
+  host: 192.168.3.111
+  port: 6381

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--当前服务的名称，可以根据服务名在monitor查询当前服务-->
+    <dubbo:application name="dubbo-provider"/>
+    <!--zookeeper的集群环境端口
+    protocol="zookeeper" 注册中心是zookeeper
+    -->
+    <dubbo:registry address="192.168.43.25:2181,192.168.43.25:2182,192.168.43.25:2183" protocol="zookeeper"/>
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <dubbo:service interface="com.buba.zookeeper.service.UserService" ref="UserServiceImpl"/>
+
+    <context:component-scan base-package="com.buba.zookeeper.service"/>
+</beans>
